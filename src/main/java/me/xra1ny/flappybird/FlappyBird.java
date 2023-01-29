@@ -42,42 +42,32 @@ public class FlappyBird extends Game {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void onKeyPress(@NotNull KeyEvent keyEvent) {
 
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void onKeyRelease(@NotNull KeyEvent keyEvent) {
 
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void onMousePress(@NotNull MouseEvent mouseEvent) {
 
     }
 
     @Override
-    public void mouseClick(@NotNull MouseEvent mouseEvent) {
+    public void onMouseRelease(@NotNull MouseEvent mouseEvent) {
 
     }
 
     @Override
-    public void mousePress(@NotNull MouseEvent mouseEvent) {
+    public void onMouseEnterComponent(@NotNull MouseEvent mouseEvent) {
 
     }
 
     @Override
-    public void mouseRelease(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseEnter(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseExit(@NotNull MouseEvent mouseEvent) {
+    public void onMouseExitComponent(@NotNull MouseEvent mouseEvent) {
 
     }
 }

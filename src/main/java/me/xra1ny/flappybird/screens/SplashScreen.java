@@ -27,6 +27,36 @@ public class SplashScreen extends GameScreen {
     }
 
     @Override
+    public void onKeyPress(@NotNull KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void onKeyRelease(@NotNull KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void onMousePress(@NotNull MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void onMouseRelease(@NotNull MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void onMouseEnterComponent(@NotNull MouseEvent mouseEvent) {
+
+    }
+
+    @Override
+    public void onMouseExitComponent(@NotNull MouseEvent mouseEvent) {
+
+    }
+
+    @Override
     public void onEnable() {
         setBackground(Color.DARK_GRAY);
         getGame().getSoundEngine().playSound("splashboop.wav");
@@ -42,46 +72,6 @@ public class SplashScreen extends GameScreen {
 
     @Override
     public void onDisable() {
-
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    @Override
-    public void mouseClick(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mousePress(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseRelease(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseEnter(@NotNull MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mouseExit(@NotNull MouseEvent mouseEvent) {
 
     }
 }

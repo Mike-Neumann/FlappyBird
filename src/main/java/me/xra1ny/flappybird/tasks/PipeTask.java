@@ -4,7 +4,6 @@ import me.xra1ny.flappybird.FlappyBird;
 import me.xra1ny.flappybird.entities.PipeLane;
 import me.xra1ny.gameapi.engines.tasks.RepeatableTask;
 import me.xra1ny.gameapi.engines.tasks.RepeatableTaskInfo;
-import me.xra1ny.gameapi.objects.GameObject;
 import me.xra1ny.gameapi.utils.PropertyUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,15 +27,5 @@ public class PipeTask extends RepeatableTask {
         final PipeLane pipeLane = new PipeLane(pipeGap, flappyBird.getHeight());
         pipeLane.setX(flappyBird.getX()+ flappyBird.getWidth());
         flappyBird.getMainScreen().getGameObjects().add(pipeLane);
-
-        for(GameObject gameObject : flappyBird.getMainScreen().getGameObjects()) {
-            if(gameObject instanceof PipeLane) {
-                final PipeLane old = (PipeLane) gameObject;
-                if(old.getX() < 0) {
-                    flappyBird.getMainScreen().getGameObjects().remove(gameObject);
-                    break;
-                }
-            }
-        }
     }
 }

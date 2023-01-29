@@ -7,7 +7,6 @@ import me.xra1ny.flappybird.entities.Bird;
 import me.xra1ny.flappybird.tasks.PipeTask;
 import me.xra1ny.gameapi.Game;
 import me.xra1ny.gameapi.objects.GameObject;
-import me.xra1ny.gameapi.objects.Sprite;
 import me.xra1ny.gameapi.screens.GameScreen;
 import me.xra1ny.gameapi.utils.Fonts;
 import org.jetbrains.annotations.NotNull;
@@ -59,6 +58,16 @@ public class MainScreen extends GameScreen {
     }
 
     @Override
+    public void onKeyPress(@NotNull KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void onKeyRelease(@NotNull KeyEvent keyEvent) {
+
+    }
+
+    @Override
     public void onEnable() {
         final FlappyBird flappyBird = (FlappyBird) getGame();
         started = false;
@@ -77,9 +86,6 @@ public class MainScreen extends GameScreen {
         bird.setAlive(true);
         bird.setAllowTick(false);
 
-        bird.setX(100);
-        bird.setY(150);
-
         bird.setCurrentScore(0);
 
         gameObjects.clear();
@@ -96,28 +102,7 @@ public class MainScreen extends GameScreen {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    @Override
-    public void mouseClick(@NotNull MouseEvent e) {
-
-    }
-
-    @Override
-
-    public void mousePress(@NotNull MouseEvent e) {
+    public void onMousePress(@NotNull MouseEvent e) {
         final int keycode = e.getButton();
 
         if(keycode == MouseEvent.BUTTON1) {
@@ -137,17 +122,17 @@ public class MainScreen extends GameScreen {
     }
 
     @Override
-    public void mouseRelease(@NotNull MouseEvent e) {
+    public void onMouseRelease(@NotNull MouseEvent mouseEvent) {
 
     }
 
     @Override
-    public void mouseEnter(@NotNull MouseEvent e) {
+    public void onMouseEnterComponent(@NotNull MouseEvent mouseEvent) {
 
     }
 
     @Override
-    public void mouseExit(@NotNull MouseEvent e) {
+    public void onMouseExitComponent(@NotNull MouseEvent mouseEvent) {
 
     }
 

@@ -4,10 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 import me.xra1ny.flappybird.FlappyBird;
 import me.xra1ny.gameapi.Game;
+import me.xra1ny.gameapi.engines.handlers.RenderResult;
+import me.xra1ny.gameapi.engines.handlers.TickResult;
 import me.xra1ny.gameapi.objects.AnimatedSprite;
 import me.xra1ny.gameapi.objects.Entity;
 import me.xra1ny.gameapi.objects.Sprite;
 import me.xra1ny.gameapi.objects.SpriteSheet;
+import me.xra1ny.gameapi.screens.GameScreen;
 import me.xra1ny.gameapi.utils.FileUtils;
 import me.xra1ny.gameapi.utils.PropertyUtils;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +28,8 @@ public class Bird extends Entity {
 
     public Bird() {
         animatedSprite.enable();
+        setX(75);
+        setY(150);
     }
 
     public void jump(@NotNull Game game) {
@@ -57,27 +62,31 @@ public class Bird extends Entity {
     }
 
     @Override
-    public void tick(@NotNull Game game) {
-        setYVelocity((float) (getYVelocity()+.2));
+    public TickResult onTick(@NotNull GameScreen gameScreen) {
+        setYVelocity(getYVelocity()+.2);
 
-        if(getY() > game.getHeight()) {
-            kill((FlappyBird) game);
+        if(getY() > gameScreen.getGame().getHeight()) {
+            kill((FlappyBird) gameScreen.getGame());
         }
+
+        return TickResult.DEFAULT;
     }
 
     @Override
-    public int getWidth() {
+    public double getWidth() {
         return 60;
     }
 
     @Override
-    public int getHeight() {
+    public double getHeight() {
         return 50;
     }
 
     @Override
-    public void renderTick(@NotNull Game game, @NotNull Graphics2D gtd) {
-        gtd.drawImage(getSprite().getBufferedImage(), getX(), getY(), getWidth(), getHeight(), null);
+    public RenderResult onRender(@NotNull GameScreen gameScreen, @NotNull Graphics2D gtd) {
+        gtd.drawImage(getSprite().getBufferedImage(), (int) getX(), (int) getY(), (int) getWidth(), (int) getHeight(), null);
+
+        return RenderResult.DEFAULT;
     }
 
     @Override

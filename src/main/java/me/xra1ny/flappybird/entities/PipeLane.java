@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import me.xra1ny.flappybird.FlappyBird;
 import me.xra1ny.gameapi.Game;
+import me.xra1ny.gameapi.engines.handlers.RenderResult;
+import me.xra1ny.gameapi.engines.handlers.TickResult;
 import me.xra1ny.gameapi.objects.Entity;
+import me.xra1ny.gameapi.screens.GameScreen;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -26,49 +29,53 @@ public class PipeLane extends Entity {
     }
 
     @Override
-    public void tick(@NotNull Game game) {
-        final FlappyBird flappyBird = (FlappyBird) game;
+    public TickResult onTick(@NotNull GameScreen gameScreen) {
+        final FlappyBird flappyBird = (FlappyBird) gameScreen.getGame();
 
         if(flappyBird.getMainScreen().getBird().isAlive()) {
             setX(getX()-3);
             setY(0);
-            top.tick(game);
-            bottom.tick(game);
+            top.tick(gameScreen);
+            bottom.tick(gameScreen);
         }
 
 
         if(!passed) {
-            if(flappyBird.getMainScreen().getBird().collidesWith(this)) {
+            if(flappyBird.getMainScreen().getBird().collidesWith(this, flappyBird.getCollisionTolerance())) {
                 flappyBird.getMainScreen().getBird().score(flappyBird, this);
             }
         }
+
+        return TickResult.DEFAULT;
     }
 
     @Override
-    public int getWidth() {
+    public double getWidth() {
         return 80;
     }
 
     @Override
-    public int getHeight() {
+    public double getHeight() {
         return 480;
     }
 
     @Override
-    public void renderTick(@NotNull Game game, @NotNull Graphics2D gtd) {
-        top.renderTick(game, gtd);
-        bottom.renderTick(game, gtd);
+    public RenderResult onRender(@NotNull GameScreen gameScreen, @NotNull Graphics2D gtd) {
+        top.onRender(gameScreen, gtd);
+        bottom.onRender(gameScreen, gtd);
+
+        return RenderResult.DEFAULT;
     }
 
     @Override
-    public void setX(int x) {
+    public void setX(double x) {
         super.setX(x);
         top.setX(x-(getWidth()/2));
         bottom.setX(x-(getWidth()/2));
     }
 
     @Override
-    public void setY(int y) {
+    public void setY(double y) {
         super.setY(y);
         top.setY(gapY-top.getHeight());
         bottom.setY(gapY+gap);
