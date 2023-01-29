@@ -25,7 +25,7 @@ public class PipeTask extends RepeatableTask {
     @Override
     public void tick() {
         final PipeLane pipeLane = new PipeLane(pipeGap, flappyBird.getHeight());
-        pipeLane.setX(flappyBird.getX()+ flappyBird.getWidth());
+        pipeLane.setX(flappyBird.getX()+flappyBird.getWidth());
         flappyBird.getMainScreen().getGameObjects().add(pipeLane);
     }
 }

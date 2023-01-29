@@ -33,7 +33,7 @@ public class Bird extends Entity {
     }
 
     public void jump(@NotNull Game game) {
-        setYVelocity(-4);
+        setYVelocity(-3);
         game.getSoundEngine().playSound("jump.wav");
     }
 
@@ -63,7 +63,7 @@ public class Bird extends Entity {
 
     @Override
     public TickResult onTick(@NotNull GameScreen gameScreen) {
-        setYVelocity(getYVelocity()+.2);
+        setYVelocity(getYVelocity()+.1);
 
         if(getY() > gameScreen.getGame().getHeight()) {
             kill((FlappyBird) gameScreen.getGame());

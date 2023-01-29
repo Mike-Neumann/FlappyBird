@@ -70,8 +70,8 @@ public class PipeLane extends Entity {
     @Override
     public void setX(double x) {
         super.setX(x);
-        top.setX(x-(getWidth()/2));
-        bottom.setX(x-(getWidth()/2));
+        top.setX(x-(getWidth()/3));
+        bottom.setX(x-(getWidth()/3));
     }
 
     @Override
