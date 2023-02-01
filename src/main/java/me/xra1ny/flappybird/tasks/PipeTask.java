@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @RepeatableTaskInfo(interval = 3000)
 public class PipeTask extends RepeatableTask {
     private final FlappyBird flappyBird;
-    private int pipeGap = 120;
+    private final int pipeGap;
 
     public PipeTask(@NotNull FlappyBird flappyBird) {
         this.flappyBird = flappyBird;
